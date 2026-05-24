@@ -1,0 +1,31 @@
+
+WhatDidIdo LIst
+
+3인의 에셋폴더를 받아서 내 프로젝트에 넣음
+김형일 : Prefabs/CardPrefab, Prefabs/newCardPrefab, HandManager, CardUseManager, CardDisplay 가져옴
+장준수 : Images 폴더 전반, Scripts 폴더 전반 Scenes 폴더 전반(sampleScene 제외)
+배철환 : ThirdParty, Scripts, Scenes 가져옴
+
+장준수 BattleScene-> BattleScene_Sample1
+박기훈 BattleScene-> BattleScene_Sample2
+배철환 SampleScene-> BattleScene
+
+카드 프리팹은 CardUI 사용함. 추후 디자인 변경시 참고바람
+배철환 BattleManager.cs -> 카드 사용 매니저(by 김형일) 호환을 위해 카드 사용섹션 주석화, cost는 Unit클래스를 통해 제어로 변경
+	CardUI에 Card(박기훈), CardDisplay(김형일)의 코드 통합.[이후 Card(박기훈), CardDisplay(김형일)을 사용하는 로직은 전부 CardUI사용으로 변경]
+	Card(배철환)에 CardData(박기훈) 통합, isTargetable 함수 추가 //
+	힘 로직 변경 (카드 기본 공격력 + 힘) 이후 약화 취약 고려, 힘 획득은 전투 내에서 반영구적
+	-> 기존 힘 관련 로직 주석화
+	EnemyTargeting 삭제-> Unit 내장으로 변경
+	DeckSystem -> 여러 클래스가 공유해야하는 상황, MonoBehaviour 상속 및 싱글톤 사용.
+
+박기훈 fighter, playerFigher, MonsterFighter 클래스 제거, Unit 클래스와 그 상속클래스(PlayerUnit, EnemyUnit 클래스로 추가 구현 예정)로 대체 예정
+
+김형일 CardUseManager -> CardManager(박기훈) 통합, OnCardClickedInHand 로직 교체: 두번 클릭시 사용에서 논타겟 카드의 경우 단순 클릭시 사용, 타겟카드의 경우 타겟 선택시 사용, 싱글톤사용
+	HandManager-> 싱글톤 사용, 
+
+GameManager : CardUseManager, HandManager DeckSystem 컴포넌트 추가
+
+HandManager, CardUseManager(김형일)과 DeckSystem(배철환) 동기화작업
+
+ActionDisplay 프리팹 생성 적의 행동은 이를 통해 보여줌

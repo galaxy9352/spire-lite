@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2620801804e38f844ac9e0cbc03462a9, type: 3}
+  m_Name: Overwhelming
+  m_EditorClassIdentifier: Assembly-CSharp::Card
+  cardName: "\uC555\uB3C4\uC801"
+  cost: 1
+  description: "\uD798\uC744 2 \uC5BB\uC2B5\uB2C8\uB2E4."
+  cardArt: {fileID: 21300000, guid: f26fa8880b3aeef4b8516c82dc12f2a5, type: 3}
+  effectCount: 1
+  cardEffects: 02000000
+  effectAmounts: 02000000
+  cardType: 2
+  targetable: 0
