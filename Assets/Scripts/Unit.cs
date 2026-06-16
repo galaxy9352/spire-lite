@@ -61,8 +61,17 @@ public class Unit : MonoBehaviour, IPointerDownHandler
     }
     public void Initialize(int hp)
     {
-        maxHP = hp;
-        currentHP = hp;
+        if (isPlayer && PlayerManger.Instance != null)
+        {
+            maxHP = PlayerManger.Instance.PlayerMaxHp;
+            currentHP = PlayerManger.Instance.PlayerCurHp;
+        }
+        else
+        {
+            maxHP = hp;
+            currentHP = hp;
+        }
+
         block = strength = vulnerable = weak = poison = 0;
         strengthAddedLastTurn = strengthAddedThisTurn = 0;
         actionExecuted = false;

@@ -334,6 +334,8 @@ public class BattleManager : MonoBehaviour
         {
             state = TurnState.Won;
             ResultWindow.SetActive(true);
+            PlayerManger.Instance.PlayerMaxHp = playerUnit.maxHP;
+            PlayerManger.Instance.PlayerCurHp = playerUnit.currentHP;
             Debug.Log("★ VICTORY: 모든 적 처치 ★");
         }
     }

@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 1800062579272103098}
   - component: {fileID: 5604928646702567406}
   - component: {fileID: 3674439039558095191}
+  - component: {fileID: 2696404963221801703}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -409,7 +410,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5604928646702567406}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2696404963221801703}
+        m_TargetAssemblyTypeName: ReturnButton, Assembly-CSharp
+        m_MethodName: GotoMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2696404963221801703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6311927003333353860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f541515c378a84f92fa6d525ffd3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReturnButton
 --- !u!1 &8517102912100432926
 GameObject:
   m_ObjectHideFlags: 0
