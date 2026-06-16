@@ -31,16 +31,12 @@ public class DeckSystem : MonoBehaviour
     {
         Card[] loadData= Resources.LoadAll<Card>("ScriptableObjects/Cards/CardData");
 
-        AddToDraw(loadData[0]);
-        AddToDraw(loadData[0]);
-        AddToDraw(loadData[0]);
-        AddToDraw(loadData[0]);
-        AddToDraw(loadData[1]);
-        AddToDraw(loadData[2]);
-        AddToDraw(loadData[3]);
-        AddToDraw(loadData[3]);
-        AddToDraw(loadData[3]);
-        AddToDraw(loadData[3]);
+        foreach(Card cardData in loadData)
+        {
+            AddToDraw(cardData);
+            AddToDraw(cardData);
+            AddToDraw(cardData);
+        }
         Shuffle();
     }
 
@@ -56,6 +52,7 @@ public class DeckSystem : MonoBehaviour
     // 한 장 뽑아 핸드에 추가. 양쪽 다 비었으면 null 반환.
     public Card Draw()
     {
+        
         if (drawPile.Count == 0 && discardPile.Count > 0)
         {
             drawPile.AddRange(discardPile);
@@ -63,6 +60,7 @@ public class DeckSystem : MonoBehaviour
             Shuffle();
         }
         if (drawPile.Count == 0) return null;
+        
         Card card = drawPile[0];
         HandManager.Instance.DrawCardObject(card);
         HandManager.Instance.UpdateHandLayout();

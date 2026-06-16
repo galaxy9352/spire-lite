@@ -89,7 +89,7 @@ public class BattleManager : MonoBehaviour
 
         playerUnit.OnTurnStart();
         playerUnit.curCost = playerUnit.maxCost;
-
+        
         // 적은 새 게임 턴이 시작될 때 block을 초기화하고 새 스탠스를 결정.
         // 방어 스탠스를 고르면 OnTurnStart 직후 block이 0이지만, DecideNextAction에서 즉시 5 부여됨.
         if (enemy1Unit.IsAlive)
@@ -234,7 +234,7 @@ public class BattleManager : MonoBehaviour
     // block > 0이면 파란 숫자, 공격 의도가 있으면 빨간 숫자. 정책상 동시에 켜지지 않음
     // (방어 스탠스를 고르면 nextAction=None이 되므로).
 
-    void RefreshAllHeadUI()
+    public void RefreshAllHeadUI()
     {
         playerUnit.ShowStrengthText(playerUnit.strength);
         playerUnit.RefreshBlockDisplay();
@@ -248,6 +248,7 @@ public class BattleManager : MonoBehaviour
         if (!enemy.IsAlive) { enemy.HideAllHeadText(); return; }
         enemy.RefreshBlockDisplay();
         enemy.RefreshIntentDisplay(playerUnit);
+
     }
 
     // ==================== 적 턴 ====================
