@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Draw
   cost: 1
   description: "\uCE74\uB4DC\uB97C 2\uC7A5 \uBF51\uC2B5\uB2C8\uB2E4."
-  cardArt: {fileID: -1005278575, guid: 132358e9bf26b60458b731bf001e31db, type: 3}
+  cardArt: {fileID: 21300000, guid: 1c74d1dcff866ee48a68842355840c90, type: 3}
   playerUnit: {fileID: 0}
   effectCount: 1
   cardEffects: 07000000
