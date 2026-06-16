@@ -23,15 +23,42 @@ public class CardUI : MonoBehaviour
     private Quaternion targetRotation;
     public Vector3 finalTargetPos;
 
+    [Header("Card Type Colors")]
+    public Color attackColor = new Color(0.8f, 0.3f, 0.3f); // 빨간색 계열
+    public Color DebuffColor = new Color(0.3f, 0.7f, 0.4f);  // 초록색 계열
+    public Color BuffColor = new Color(0.3f, 0.5f, 0.8f);  // 파란색 계열
+
+
     public void Setup(Card card)
     {
         cardData = card;
         cardImage = gameObject.transform.GetChild(0).GetComponent<Image>();
+       
         cardType = gameObject.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
         cardName = gameObject.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>();
         cardDesc = gameObject.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>();
         ApplyCardData();
-        //backgroundImage.color = Color.white;
+        if (backgroundImage == null)
+        {
+            // GetChild 없이 자기 자신의 Image를 바로 가져옵니다.
+            backgroundImage = GetComponent<Image>();
+        }
+        if (backgroundImage != null)
+        {
+            switch (card.cardType)
+            {
+                case CardType.Attack:
+                    backgroundImage.color = attackColor;
+                    break;
+                case CardType.Debuff:
+                    backgroundImage.color = DebuffColor;
+                    break;
+                case CardType Buff:
+                    backgroundImage.color = BuffColor;
+                    break;
+            }
+        }
+
     }
     void Update()
     {
@@ -72,6 +99,7 @@ public class CardUI : MonoBehaviour
     }
     public void ApplyCardData()
     {
+       
         cardImage.sprite = cardData.cardArt;
         cardName.text = cardData.cardName + "(" + cardData.cost + ")";
         cardDesc.text = cardData.description;

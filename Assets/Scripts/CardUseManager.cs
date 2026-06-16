@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class CardUseManager : MonoBehaviour
 {
     private Unit player;
@@ -62,46 +62,38 @@ public class CardUseManager : MonoBehaviour
         ProcessCardUsage (selectedCard);
     }
 
-    // 💡 [기능 분리] 실제 카드 사용 및 오브젝트 파괴 로직
-    private void ProcessCardUsage(CardUI cardToUse)
+    private IEnumerator ProcessCardUsageRoutine(CardUI cardToUse, Unit targetUnit)
     {
-        // 실제 효과 적용 시도
-        if (UseCard(cardToUse, target))
+        Card ctuData = Instantiate(cardToUse.cardData);
+
+        // 코스트(에너지) 체크
+        if (player == null || player.curCost < ctuData.cost)
         {
-            selectedCard = null; // 선택 참조 초기화
-            // 사용 성공 시
-            DeckSystem.Instance.DiscardCard( cardToUse.transform.GetSiblingIndex());
-            // 패 재정렬 호출
-            if (HandManager.Instance != null)
-            {
-                //HandManager.Instance.UpdateHandLayout();
-            }
-        }
-        else
-        {
-            // 💡 에너지 부족 등으로 사용 실패 시 -> 다시 아래로 내립니다.
+            Debug.LogWarning("❌ 에너지가 부족합니다!");
             cardToUse.isSelected = false;
             selectedCard = null;
-            
+            yield break; // 코루틴 즉시 종료
         }
+
+        // 코스트 지불 및 UI 업데이트
+        player.curCost -= ctuData.cost;
+        BattleManager.Instance.UpdateUI();
+
+        // 💡 변경된 코루틴 실행 및 대기 (다단히트 등 효과가 모두 끝날 때까지 대기)
+        yield return StartCoroutine(ctuData.UseCardRoutine(player, targetUnit));
+
+        Debug.Log($"🎯 {cardToUse.cardName} 카드가 성공적으로 사용되었습니다!");
+
+        // 카드 사용이 모두 끝난 후 패에서 버림 처리
+        selectedCard = null;
+        DeckSystem.Instance.DiscardCard(cardToUse.transform.GetSiblingIndex());
         BattleManager.Instance.UpdateUI();
     }
 
-    // [기존 UseCard 함수 내용 유지 - 리턴타입 bool인 버전]
-    public bool UseCard(CardUI cardToUse, Unit target)
+    // 2️⃣ 기존 함수들이 있던 자리에 OnCardClickedInHand, OnTargetSelected에서 바로 부를 수 있도록 연결 함수를 작성해.
+    private void ProcessCardUsage(CardUI cardToUse)
     {
-        Card ctuData = Instantiate(cardToUse.cardData);
-        if (player == null) return false;
-        if (player.curCost < ctuData.cost)
-        {
-            Debug.LogWarning("❌ 에너지가 부족합니다!");
-            return false;
-        }
-        ctuData.UseCard(player, target);
-        player.curCost -= ctuData.cost;
-
-        Debug.Log($"🎯 {cardToUse.cardName} 카드가 성공적으로 사용되었습니다!");
-        return true;
+        StartCoroutine(ProcessCardUsageRoutine(cardToUse, target));
     }
 
     public void CancelSelection()

@@ -32,8 +32,8 @@ public class CardManager: MonoBehaviour
 		this.target = target;
 		user= getCardUser();
 
-        selectedData.UseCard(user, target);
-		isTargeting=false;
+        StartCoroutine(selectedData.UseCardRoutine(user, target));
+        isTargeting =false;
 		selectedData = null;
     }
 	Unit getCardUser()

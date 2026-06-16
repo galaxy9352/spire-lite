@@ -15,7 +15,8 @@ MonoBehaviour:
   cardName: "\uC218\uBE44"
   cost: 1
   description: "\uBC29\uC5B4\uB3C4\uB97C 5 \uC5BB\uC2B5\uB2C8\uB2E4."
-  cardArt: {fileID: 8426817888908902439, guid: d4bada5aa3f0db84a98ca4f5e2c46ec9, type: 3}
+  cardArt: {fileID: 21300000, guid: c67f6060700f79d4f842b3632c073ff9, type: 3}
+  playerUnit: {fileID: 0}
   effectCount: 1
   cardEffects: 01000000
   effectAmounts: 05000000

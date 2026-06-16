@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2620801804e38f844ac9e0cbc03462a9, type: 3}
+  m_Name: Draw
+  m_EditorClassIdentifier: Assembly-CSharp::Card
+  cardName: Draw
+  cost: 1
+  description: "\uCE74\uB4DC\uB97C 2\uC7A5 \uBF51\uC2B5\uB2C8\uB2E4."
+  cardArt: {fileID: -1005278575, guid: 132358e9bf26b60458b731bf001e31db, type: 3}
+  playerUnit: {fileID: 0}
+  effectCount: 1
+  cardEffects: 07000000
+  effectAmounts: 02000000
+  cardType: 1
+  targetable: 0

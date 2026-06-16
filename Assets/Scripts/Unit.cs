@@ -107,7 +107,7 @@ public class Unit : MonoBehaviour, IPointerDownHandler
     {
         float calc = baseDamage += strength;
         if (weak > 0) calc *= 0.75f;
-        return Mathf.FloorToInt(baseDamage);
+        return Mathf.FloorToInt(calc);
     }
     public void TakeFinalDamage(int finalDamage)
     {
@@ -125,6 +125,10 @@ public class Unit : MonoBehaviour, IPointerDownHandler
     {
         if (amount <= 0) return;
         currentHP = Mathf.Max(0, currentHP - amount);
+        if (BattleManager.Instance != null)
+        {
+            BattleManager.Instance.CheckWinLose();
+        }
     }
     public void ShowStrengthText(int amount)
     {
@@ -161,8 +165,8 @@ public class Unit : MonoBehaviour, IPointerDownHandler
         }
 
         int predicted = (playerTarget != null)
-            ? playerTarget.CalculateIncomingDamage(nextActionValue)
-            : nextActionValue;
+        ? playerTarget.CalculateIncomingDamage(GetAttackDamage(nextActionValue, playerTarget)) 
+        : GetAttackDamage(nextActionValue, null);
 
         damageText.text = predicted.ToString();
         damageText.color = damageColor;
