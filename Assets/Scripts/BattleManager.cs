@@ -295,7 +295,7 @@ public class BattleManager : MonoBehaviour
     {
         if (!enemy.IsAlive) yield break;
 
-        ExecuteEnemyAction(enemy);
+        yield return StartCoroutine(ExecuteEnemyActionRoutine(enemy));
 
         RefreshEnemyHead(enemy);
         playerUnit.RefreshBlockDisplay();
@@ -304,14 +304,34 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
     }
 
-    void ExecuteEnemyAction(Unit enemy)
+    IEnumerator ExecuteEnemyActionRoutine(Unit enemy)
     {
-        if (!enemy.IsAlive) return;
+        if (!enemy.IsAlive) yield break;
 
         if (enemy.nextAction == Unit.EnemyAction.Attack)
         {
-            int dmg = enemy.GetAttackDamage(enemy.nextActionValue, playerUnit);
-            playerUnit.TakeFinalDamage(dmg);
+            // 1. 기본 타격 횟수는 1번으로 설정 (Unit01 용)
+            int hits = 1;
+
+            // 2. 만약 공격하는 적이 Unit02라면, Unit02에 설정된 타수(2번)를 가져옴
+            if (enemy is Unit02 unit02)
+            {
+                hits = unit02.nextActionHits;
+            }
+
+            // 3. 정해진 타수만큼 반복해서 데미지를 입힘
+            for (int i = 0; i < hits; i++)
+            {
+                int dmg = enemy.GetAttackDamage(enemy.nextActionValue, playerUnit);
+                playerUnit.TakeFinalDamage(dmg);
+
+                // 여러 대를 때릴 경우 한 번에 맞지 않고 0.2초 간격으로 타격감 있게 맞도록 대기
+                // (마지막 타격 후에는 기다리지 않음)
+                if (i < hits - 1)
+                {
+                    yield return new WaitForSeconds(0.2f);
+                }
+            }
         }
         // Defend는 이미 DecideNextAction 시점에 block을 받아두었으므로 여기선 아무것도 하지 않음.
 

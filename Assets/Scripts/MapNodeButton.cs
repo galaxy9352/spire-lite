@@ -60,8 +60,14 @@ public class MapNodeButton : MonoBehaviour
         switch (NodeData.type)
         {
             case vertType.fight:
-                SceneManager.LoadScene("BattleScene");
+                int randomSceneIndex = UnityEngine.Random.Range(0, 2);
+
+                // 0이 나오면 BattleScene01, 1이 나오면 BattleScene02를 로드합니다.
+                string targetScene = (randomSceneIndex == 0) ? "BattleScene01" : "BattleScene02";
+
+                SceneManager.LoadScene(targetScene);
                 break;
+
             case vertType.rest:
                 //SceneManager.LoadScene("RestScene");
                 break;

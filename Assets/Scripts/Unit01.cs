@@ -59,7 +59,7 @@ public class Unit : MonoBehaviour, IPointerDownHandler
             CardUseManager.Instance.CancelSelection();
         }
     }
-    public void Initialize(int hp)
+    public virtual void Initialize(int hp)
     {
         if (isPlayer && PlayerManger.Instance != null)
         {
@@ -163,7 +163,7 @@ public class Unit : MonoBehaviour, IPointerDownHandler
     }
 
     // 공격 의도가 있을 때만 빨간 예정 데미지 표시. 그 외에는 숨김.
-    public void RefreshIntentDisplay(Unit playerTarget)
+    public virtual void RefreshIntentDisplay(Unit playerTarget)
     {
         if (damageText == null) return;
 
@@ -191,7 +191,7 @@ public class Unit : MonoBehaviour, IPointerDownHandler
 
     // 플레이어 턴 시작 시 호출. 방어를 고르면 즉시 block을 부여하고 의도는 None으로.
     // 공격을 고르면 nextAction=Attack으로 두고 적 턴에 실행.
-    public void DecideNextAction()
+    public virtual void DecideNextAction()
     {
         actionExecuted = false;
 
