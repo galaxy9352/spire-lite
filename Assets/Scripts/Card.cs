@@ -21,13 +21,13 @@ public class Card : ScriptableObject
     public int cost;
     public string description;
     public Sprite cardArt;
-    public Unit playerUnit;
+    public UnitPlayer playerUnit;
     public int effectCount;
     public List<EffectType> cardEffects = new List<EffectType>();
     public List<int> effectAmounts;
     public CardType cardType;
     public bool targetable= true;
-    public IEnumerator UseCardRoutine(Unit user, Unit target)
+    public IEnumerator UseCardRoutine(UnitPlayer user, Unit target)
     {
         for(int i = 0; i < effectCount; i++)
         {
