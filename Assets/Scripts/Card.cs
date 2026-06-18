@@ -65,7 +65,12 @@ public class Card : ScriptableObject
                     }
                     break;
                 case EffectType.Heal:
-                        user.currentHP+= effectAmounts[i];    
+                    if (user.currentHP + effectAmounts[i] >= user.maxHP)
+                    {
+                        user.currentHP = user.maxHP;
+                    }
+                    else { user.currentHP += effectAmounts[i]; }
+
                     break;
 
             }

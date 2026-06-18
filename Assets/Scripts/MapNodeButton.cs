@@ -79,7 +79,15 @@ public class MapNodeButton : MonoBehaviour
         {
             // 2번째 일반 전투 (1번째와 반대되는 씬 고정)
             targetScene = (session.FirstBattleSceneIndex == 0) ? "BattleScene02" : "BattleScene01";
+            session.BattleStep = 2;
+        }
+        else
+        {
+            // 3번째 보스 전투 (확정 후 사이클 리셋)
+            targetScene = "BossScene01";
+
             session.BattleStep = 0;
+            session.FirstBattleSceneIndex = -1;
         }
 
         SceneManager.LoadScene(targetScene);
