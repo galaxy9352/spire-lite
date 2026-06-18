@@ -76,7 +76,7 @@ public class UnitEnemy : Unit
         if (Random.Range(0, 10) < 8)
         {
             nextAction = EnemyAction.Attack;
-            nextActionValue = 10;
+            nextActionValue = 7;
         }
         else
         {
