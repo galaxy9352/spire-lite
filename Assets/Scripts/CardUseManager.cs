@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 public class CardUseManager : MonoBehaviour
 {
-    private Unit player;
+    private UnitPlayer player;
     private Unit target;
 
     public static CardUseManager Instance; 
@@ -23,7 +23,7 @@ public class CardUseManager : MonoBehaviour
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
-            player = playerObj.GetComponent<Unit>();
+            player = playerObj.GetComponent<UnitPlayer>();
         }
         else
         {

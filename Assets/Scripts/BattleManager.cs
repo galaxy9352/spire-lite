@@ -11,9 +11,9 @@ public class BattleManager : MonoBehaviour
 
     [Header("Unit Status")]
     public TurnState state;
-    public Unit playerUnit;
-    public Unit enemy1Unit;
-    public Unit enemy2Unit;
+    public UnitPlayer playerUnit;
+    public UnitEnemy enemy1Unit;
+    public UnitEnemy enemy2Unit;
 
     [Header("UI Reference")]
     public TextMeshProUGUI turnText;
@@ -43,7 +43,6 @@ public class BattleManager : MonoBehaviour
 
     void Start()
     {
-        playerUnit.isPlayer = true;
         playerUnit.Initialize(100);
         //playerUnit.strength = playerBaseStrength;
 
@@ -237,13 +236,13 @@ public class BattleManager : MonoBehaviour
     public void RefreshAllHeadUI()
     {
         playerUnit.ShowStrengthText(playerUnit.strength);
-        playerUnit.RefreshBlockDisplay();
+        //playerUnit.RefreshBlockDisplay();
 
         RefreshEnemyHead(enemy1Unit);
         RefreshEnemyHead(enemy2Unit);
     }
 
-    void RefreshEnemyHead(Unit enemy)
+    void RefreshEnemyHead(UnitEnemy enemy)
     {
         if (!enemy.IsAlive) { enemy.HideAllHeadText(); return; }
         enemy.RefreshBlockDisplay();
@@ -291,30 +290,30 @@ public class BattleManager : MonoBehaviour
 
     // 적 턴에는 OnTurnStart를 다시 부르지 않음 — 적의 턴 갱신은 다음 PlayerTurnStart에서 일괄 처리.
     // 방어 스탠스라면 nextAction이 None이라 ExecuteEnemyAction은 아무것도 안 함.
-    IEnumerator RunSingleEnemyTurn(Unit enemy)
+    IEnumerator RunSingleEnemyTurn(UnitEnemy enemy)
     {
         if (!enemy.IsAlive) yield break;
 
         yield return StartCoroutine(ExecuteEnemyActionRoutine(enemy));
 
         RefreshEnemyHead(enemy);
-        playerUnit.RefreshBlockDisplay();
+        //playerUnit.RefreshBlockDisplay();
 
         CheckWinLose();
         yield return new WaitForSeconds(0.8f);
     }
 
-    IEnumerator ExecuteEnemyActionRoutine(Unit enemy)
+    IEnumerator ExecuteEnemyActionRoutine(UnitEnemy enemy)
     {
         if (!enemy.IsAlive) yield break;
 
-        if (enemy.nextAction == Unit.EnemyAction.Attack)
+        if (enemy.nextAction == UnitEnemy.EnemyAction.Attack)
         {
             // 1. 기본 타격 횟수는 1번으로 설정 (Unit01 용)
             int hits = 1;
 
             // 2. 만약 공격하는 적이 Unit02라면, Unit02에 설정된 타수(2번)를 가져옴
-            if (enemy is Unit02 unit02)
+            if (enemy is UnitEnemyType2 unit02)
             {
                 hits = unit02.nextActionHits;
             }

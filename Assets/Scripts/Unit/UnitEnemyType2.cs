@@ -2,14 +2,14 @@ using TMPro;
 using UnityEngine;
 
 // MonoBehaviour 대신 Unit을 상속받아 시스템이 Unit 타입으로 인식하게 합니다.
-public class Unit02 : Unit
+public class UnitEnemyType2 : UnitEnemy
 {
     public override void Initialize(int hp)
     {
         base.Initialize(40);
     }
 
-    [Header("Unit02 전용 상태")]
+    //[Header("Unit02 전용 상태")]
     public int nextActionHits; // 다단 히트(연타) 횟수
 
     // 70% 확률로 4x2 공격, 30% 확률로 방어도 4를 얻도록 행동 결정

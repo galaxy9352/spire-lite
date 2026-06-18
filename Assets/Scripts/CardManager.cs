@@ -7,7 +7,7 @@ public class CardManager: MonoBehaviour
 	public static CardManager Instance;
 
 	public Card selectedData;
-    public Unit user;
+    public UnitPlayer user;
     public Unit target;
 	bool isTargeting;
 
@@ -36,9 +36,9 @@ public class CardManager: MonoBehaviour
         isTargeting =false;
 		selectedData = null;
     }
-	Unit getCardUser()
+	UnitPlayer getCardUser()
 	{
-		return GameObject.FindGameObjectWithTag("Player").GetComponent<Unit>();
+		return GameObject.FindGameObjectWithTag("Player").GetComponent<UnitPlayer>();
     }
 
     // Update is called once per frame
