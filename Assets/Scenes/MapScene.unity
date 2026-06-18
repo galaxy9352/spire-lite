@@ -305,7 +305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC804\uCCB4 \uB371: 30\uC7A5"
+  m_text: "\uC804\uCCB4 \uB371: 33\uC7A5"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc3b85805a0f48a46a10497b4d8a74bc, type: 2}
   m_sharedMaterial: {fileID: 2645115982504077286, guid: bc3b85805a0f48a46a10497b4d8a74bc, type: 2}
@@ -814,6 +814,7 @@ MonoBehaviour:
   edgeObj: {fileID: 740378502201387835, guid: f0a476014f34679458b76a74b64dcab8, type: 3}
   maxLayer: 8
   maxVertPerLayer: 5
+  hpDisplay: {fileID: 2061512495}
   mapScrollRect: {fileID: 978375223}
   viewportRect: {fileID: 1450399588}
   maxOverScroll: 1.05

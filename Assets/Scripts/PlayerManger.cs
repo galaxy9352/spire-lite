@@ -24,5 +24,11 @@ public class PlayerManger : MonoBehaviour
         PlayerMaxHp = max;
         PlayerCurHp = cur;
     }
-
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 }

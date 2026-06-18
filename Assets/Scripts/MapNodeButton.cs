@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -43,11 +44,15 @@ public class MapNodeButton : MonoBehaviour
 
         switch (NodeData.type)
         {
+            case vertType.last:
+                SceneManager.LoadScene("BossScene01");
+                break;
             case vertType.fight:
                 ProcessFightNode();
                 break;
 
-            case vertType.rest:
+            case vertType.rest:// 잃은 체력의 50%를 회복
+                PlayerManger.Instance.PlayerCurHp += (int)math.ceil((PlayerManger.Instance.PlayerMaxHp - PlayerManger.Instance.PlayerCurHp) * 0.5f);
                 // SceneManager.LoadScene("RestScene");
                 break;
         }
@@ -64,7 +69,7 @@ public class MapNodeButton : MonoBehaviour
         if (session.BattleStep == 0)
         {
             // 1번째 일반 전투 (50% 확률 랜덤)
-            int randomIdx = Random.Range(0, 2);
+            int randomIdx = UnityEngine.Random.Range(0, 2);
             session.FirstBattleSceneIndex = randomIdx;
 
             targetScene = (randomIdx == 0) ? "BattleScene01" : "BattleScene02";
@@ -74,15 +79,7 @@ public class MapNodeButton : MonoBehaviour
         {
             // 2번째 일반 전투 (1번째와 반대되는 씬 고정)
             targetScene = (session.FirstBattleSceneIndex == 0) ? "BattleScene02" : "BattleScene01";
-            session.BattleStep = 2;
-        }
-        else
-        {
-            // 3번째 보스 전투 (확정 후 사이클 리셋)
-            targetScene = "BossScene01";
-
             session.BattleStep = 0;
-            session.FirstBattleSceneIndex = -1;
         }
 
         SceneManager.LoadScene(targetScene);

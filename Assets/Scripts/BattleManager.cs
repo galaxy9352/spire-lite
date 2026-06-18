@@ -272,6 +272,11 @@ public class BattleManager : MonoBehaviour
         if (playerUnit != null && !playerUnit.IsAlive)
         {
             state = TurnState.Lost;
+            if (ResultWindow != null)
+            {
+                ResultWindow.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "패배!";
+                ResultWindow.SetActive(true);
+            }
             Debug.Log("★ GAME OVER: 플레이어 사망 ★");
             return;
         }

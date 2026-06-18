@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
+
     private ScrollRect scrollRect;
     public LayeredGraphFactory layeredGraph;
     private Graph<VertexPosition> activeGraph;
@@ -17,6 +18,8 @@ public class MapManager : MonoBehaviour
     public GameObject edgeObj;
     public int maxLayer = 8;
     public int maxVertPerLayer = 5;
+
+    public SetHP hpDisplay;
 
     [SerializeField] private ScrollRect mapScrollRect;
     [SerializeField] private RectTransform viewportRect;
@@ -196,7 +199,7 @@ public class MapManager : MonoBehaviour
             }
             else
             {
-                img.color = new Color(0.3f, 0.3f, 0.3f, 0.4f);
+                img.color = new Color(0.7f, 0.7f, 0.7f, 0.7f);
                 if (btn != null) btn.enabled = false;
             }
         }
@@ -228,7 +231,7 @@ public class MapManager : MonoBehaviour
             }
             else
             {
-                img.color = new Color(0.2f, 0.2f, 0.2f, 0.15f);
+                img.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
             }
         }
 

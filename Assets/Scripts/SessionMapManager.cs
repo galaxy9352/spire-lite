@@ -73,4 +73,11 @@ public class MapSessionManager : MonoBehaviour
         }
         return null;
     }
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 }
