@@ -56,7 +56,7 @@ public class CardUseManager : MonoBehaviour
 
     public void OnTargetSelected(Unit target)
     {
-        if (selectedCard == null) return;
+        if (selectedCard == null || !target.IsAlive) return;
         this.target = target;
         waitingTarget = false;
 

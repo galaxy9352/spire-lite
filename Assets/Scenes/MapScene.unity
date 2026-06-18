@@ -685,7 +685,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   PlayerMaxHp: 100
   PlayerCurHp: 100
-  HpDisplay: {fileID: 2061512493}
 --- !u!1 &978375221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,7 +1274,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 4100, y: 2100}
+  m_SizeDelta: {x: 4100, y: 1420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1769292266
 MonoBehaviour:

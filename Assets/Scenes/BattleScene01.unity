@@ -1363,9 +1363,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
   state: 0
-  playerUnit: {fileID: 0}
-  enemy1Unit: {fileID: 0}
-  enemy2Unit: {fileID: 0}
+  playerUnit: {fileID: 1767212000}
+  enemy1Unit: {fileID: 1737853745}
+  enemy2Unit: {fileID: 689155709}
   turnText: {fileID: 904060718}
   costText: {fileID: 4261660}
   deckText: {fileID: 45347982}
@@ -1464,43 +1464,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!114 &689155703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689155702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63dd9ef7656ef5c4592ffd341979e408, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unit
-  animator: {fileID: 689155708}
-  unitName: Enemy2
-  isPlayer: 0
-  maxHP: 50
-  currentHP: 50
-  maxCost: 0
-  curCost: 0
-  block: 0
-  strength: 0
-  vulnerable: 0
-  weak: 0
-  poison: 0
-  strengthAddedLastTurn: 0
-  strengthAddedThisTurn: 0
-  actionExecuted: 0
-  strengthText: {fileID: 0}
-  damageText: {fileID: 394667231}
-  blockText: {fileID: 851272931}
-  damageColor: {r: 1, g: 0.3, b: 0.3, a: 1}
-  blockColor: {r: 0.4, g: 0.7, b: 1, a: 1}
-  nextAction: 0
-  nextActionValue: 0
-=======
->>>>>>> e233e67fce7f180f694f5fc4aae545de2943f74a
 --- !u!212 &689155704
 SpriteRenderer:
   serializedVersion: 2
@@ -1657,6 +1620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9fca6b892424f4bb998a0d41aacfc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitEnemy
+  animator: {fileID: 689155708}
+  hpBar: {fileID: 0}
   unitName: Enemy2
   maxHP: 50
   currentHP: 50
@@ -1667,6 +1632,7 @@ MonoBehaviour:
   poison: 0
   strengthAddedLastTurn: 0
   strengthAddedThisTurn: 0
+  strengthText: {fileID: 0}
   blockText: {fileID: 851272931}
   actionExecuted: 0
   damageText: {fileID: 394667231}
@@ -2832,43 +2798,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!114 &1737853739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737853738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63dd9ef7656ef5c4592ffd341979e408, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unit
-  animator: {fileID: 1737853744}
-  unitName: Enemy1
-  isPlayer: 0
-  maxHP: 50
-  currentHP: 50
-  maxCost: 0
-  curCost: 0
-  block: 0
-  strength: 0
-  vulnerable: 0
-  weak: 0
-  poison: 0
-  strengthAddedLastTurn: 0
-  strengthAddedThisTurn: 0
-  actionExecuted: 0
-  strengthText: {fileID: 0}
-  damageText: {fileID: 196303633}
-  blockText: {fileID: 69804637}
-  damageColor: {r: 1, g: 0.3, b: 0.3, a: 1}
-  blockColor: {r: 0.4, g: 0.7, b: 1, a: 1}
-  nextAction: 0
-  nextActionValue: 0
-=======
->>>>>>> e233e67fce7f180f694f5fc4aae545de2943f74a
 --- !u!212 &1737853740
 SpriteRenderer:
   serializedVersion: 2
@@ -3025,6 +2954,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9fca6b892424f4bb998a0d41aacfc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitEnemy
+  animator: {fileID: 1737853744}
+  hpBar: {fileID: 0}
   unitName: Enemy1
   maxHP: 50
   currentHP: 50
@@ -3035,6 +2966,7 @@ MonoBehaviour:
   poison: 0
   strengthAddedLastTurn: 0
   strengthAddedThisTurn: 0
+  strengthText: {fileID: 0}
   blockText: {fileID: 69804637}
   actionExecuted: 0
   damageText: {fileID: 196303633}
@@ -3061,43 +2993,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!114 &1767211995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767211994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63dd9ef7656ef5c4592ffd341979e408, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unit
-  animator: {fileID: 1767211999}
-  unitName: Player
-  isPlayer: 0
-  maxHP: 100
-  currentHP: 100
-  maxCost: 3
-  curCost: 0
-  block: 0
-  strength: 0
-  vulnerable: 0
-  weak: 0
-  poison: 0
-  strengthAddedLastTurn: 0
-  strengthAddedThisTurn: 0
-  actionExecuted: 0
-  strengthText: {fileID: 0}
-  damageText: {fileID: 0}
-  blockText: {fileID: 0}
-  damageColor: {r: 1, g: 0.3, b: 0.3, a: 1}
-  blockColor: {r: 0.4, g: 0.7, b: 1, a: 1}
-  nextAction: 0
-  nextActionValue: 0
-=======
->>>>>>> e233e67fce7f180f694f5fc4aae545de2943f74a
 --- !u!212 &1767211996
 SpriteRenderer:
   serializedVersion: 2
@@ -3207,6 +3102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42271a6c6ce2cd4eae31cf1e9fe3b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitPlayer
+  animator: {fileID: 1767211999}
+  hpBar: {fileID: 0}
   unitName: Player
   maxHP: 100
   currentHP: 100
@@ -3217,10 +3114,10 @@ MonoBehaviour:
   poison: 0
   strengthAddedLastTurn: 0
   strengthAddedThisTurn: 0
+  strengthText: {fileID: 0}
   blockText: {fileID: 0}
   maxCost: 3
   curCost: 3
-  strengthText: {fileID: 0}
 --- !u!224 &2070717419 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7609614448599936913, guid: 7b164d2ca768d884e95f1fe76dbf47ba, type: 3}

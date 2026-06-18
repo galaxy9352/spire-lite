@@ -11,6 +11,7 @@ public class UnitPlayer : Unit
 
     public override void Initialize(int hp)
     {
+        base.Initialize(hp);
         if (PlayerManger.Instance != null)
         {
             maxHP = PlayerManger.Instance.PlayerMaxHp;

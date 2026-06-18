@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class Unit : MonoBehaviour, IPointerDownHandler
 {
-<<<<<<< HEAD:Assets/Scripts/Unit01.cs
     public Animator animator;
+    public HealthBarManager hpBar;
     private bool isDead = false;    // 모션용
-    private void Die()
+    protected virtual void Die()
     {
         isDead = true;
 
@@ -17,10 +17,7 @@ public class Unit : MonoBehaviour, IPointerDownHandler
     }
 
 
-    [Header("Unit Status")]
-=======
     //[Header("Unit Status")]
->>>>>>> e233e67fce7f180f694f5fc4aae545de2943f74a:Assets/Scripts/Unit/Unit.cs
     public string unitName;
     public int maxHP;
     public int currentHP;
@@ -63,7 +60,10 @@ public class Unit : MonoBehaviour, IPointerDownHandler
     }
     public virtual void Initialize(int hp)
     {
-
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
     }
 
     // 게임 턴 시작 시 호출 (플레이어/적 모두). block은 매 게임 턴 새로 결정됨.

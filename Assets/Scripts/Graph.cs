@@ -124,8 +124,8 @@ public class LayeredGraphFactory
     private System.Random random = new System.Random();
 
     // 화면 좌표계 한계 설정값
-    private const int MinX = 0;
-    private const int MaxX = 1920;
+    private const int MinX = 320;
+    private const int MaxX = 1600;
     private const int MinY = 300;
     private const int MaxY = 3700;
 
@@ -163,7 +163,7 @@ public class LayeredGraphFactory
             }
             else
             {
-                int vertexCount = GetVertexCountForLayer(maxVertsPerLayer);
+                int vertexCount = GetVertexCountForLayer(totalLayers, layer, maxVertsPerLayer);
                 int xInterval = (MaxX - MinX) / (vertexCount + 1);
 
                 for (int i = 0; i < vertexCount; i++)
@@ -237,7 +237,7 @@ public class LayeredGraphFactory
     /// 추후 업데이트를 통해 고정 개수나 특정 규칙을 넣기 용이하도록 분리한 
     /// n번째 계층의 정점 개수 반환 함수
     /// </summary>
-    private int GetVertexCountForLayer(int maxCount)
+    private int GetVertexCountForLayer(int maxLayer, int layer, int maxCount)
     {
         // 현재는 기본 요구사항인 [최소 1개 ~ 최대 m개] 사이의 갯수를 랜덤으로 반환
         return random.Next(2, maxCount + 1);

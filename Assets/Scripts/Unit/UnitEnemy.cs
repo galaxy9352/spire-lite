@@ -53,6 +53,7 @@ public class UnitEnemy : Unit
     }
     public override void Initialize(int hp)
     {
+        base.Initialize(hp);
         maxHP = hp;
         currentHP = hp;
 
@@ -89,6 +90,12 @@ public class UnitEnemy : Unit
     {
         if (damageText != null) damageText.transform.parent.gameObject.SetActive(false);
         if (blockText != null) blockText.transform.parent.gameObject.SetActive(false);
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+
     }
 
 

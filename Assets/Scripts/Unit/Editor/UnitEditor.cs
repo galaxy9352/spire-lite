@@ -10,6 +10,11 @@ public class UnitEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        // 1. 공통 통합 헤더 배치
+        EditorGUILayout.LabelField("Unit Compnents", EditorStyles.boldLabel);
+        EditorGUILayout.Space(1);
+        SerializedProperty animatorProp = serializedObject.FindProperty("animator"); // 공통
+        if (animatorProp != null) EditorGUILayout.PropertyField(animatorProp);
 
         // 1. 공통 통합 헤더 배치
         EditorGUILayout.LabelField("Unit Status", EditorStyles.boldLabel);

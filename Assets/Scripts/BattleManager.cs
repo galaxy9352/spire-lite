@@ -318,12 +318,13 @@ public class BattleManager : MonoBehaviour
                 hits = unit02.nextActionHits;
             }
 
+
             // 3. 정해진 타수만큼 반복해서 데미지를 입힘
             for (int i = 0; i < hits; i++)
             {
                 enemy.animator.SetTrigger("Attack");
 
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.3f);
 
                 playerUnit.animator.SetTrigger("Hit");
 
@@ -334,7 +335,7 @@ public class BattleManager : MonoBehaviour
                 // (마지막 타격 후에는 기다리지 않음)
                 if (i < hits - 1)
                 {
-                    yield return new WaitForSeconds(0.2f);
+                    yield return new WaitForSeconds(0.25f);
                 }
             }
         }
@@ -362,6 +363,8 @@ public class BattleManager : MonoBehaviour
             PlayerManger.Instance.UpdateHp(playerUnit.maxHP, playerUnit.currentHP);
             Debug.Log("★ VICTORY: 모든 적 처치 ★");
         }
+        RefreshEnemyHead(enemy1Unit);
+        RefreshEnemyHead(enemy2Unit);
     }
 
     public void UpdateUI()
