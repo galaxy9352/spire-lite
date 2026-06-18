@@ -36,10 +36,21 @@ public class BattleManager : MonoBehaviour
     [HideInInspector] public Card selectedCard;
     [HideInInspector] public CardUI selectedCardUI;
 
+    // sound effect
+    public AudioClip swordSound;
+    public AudioClip shieldSound;
+    public AudioClip hitSound;
+
+    private AudioSource audioSource;
+
     //private DeckSystem deck;
     private readonly List<CardUI> handUI = new List<CardUI>();
 
-    void Awake() => Instance = this;
+    void Awake()
+    {
+        Instance = this;
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Start()
     {
@@ -243,7 +254,11 @@ public class BattleManager : MonoBehaviour
             {
                 if (enemy.animator != null) enemy.animator.SetTrigger("Attack");
                 yield return new WaitForSeconds(0.3f);
-                if (playerUnit.animator != null) playerUnit.animator.SetTrigger("Hit");
+                if (playerUnit.animator != null)
+                {
+                    playerUnit.animator.SetTrigger("Hit");
+                    PlayHitSound();
+                }
 
                 // 데미지 계산 및 적용
                 int dmg = enemy.GetAttackDamage(enemy.nextActionValue, playerUnit);
@@ -311,5 +326,21 @@ public class BattleManager : MonoBehaviour
 
         if (deckText != null) deckText.text = "남은 덱: " + DeckSystem.Instance.DrawPileCount;
         if (discardText != null) discardText.text = "버린 카드: " + DeckSystem.Instance.DiscardPileCount;
+    }
+
+    public void PlaySwordSound()
+    {
+        Debug.Log("검 소리 호출");
+        audioSource.PlayOneShot(swordSound);
+    }
+
+    public void PlayShieldSound()
+    {
+        audioSource.PlayOneShot(shieldSound);
+    }
+
+    public void PlayHitSound()
+    {
+        audioSource.PlayOneShot(hitSound);
     }
 }

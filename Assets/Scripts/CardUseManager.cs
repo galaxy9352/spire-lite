@@ -10,6 +10,8 @@ public class CardUseManager : MonoBehaviour
     public CardUI selectedCard = null; // 현재 위로 올라와 있는 '선택된 카드'
     public bool waitingTarget = false;
 
+    private BattleManager battleManager;
+
 
     void Awake()
     {
@@ -20,6 +22,8 @@ public class CardUseManager : MonoBehaviour
     }
     void Start()
     {
+        battleManager = GetComponent<BattleManager>(); // Sound 
+
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
@@ -85,6 +89,7 @@ public class CardUseManager : MonoBehaviour
         EffectType.Strike))
         {
             player.animator.SetTrigger("Attack");
+            battleManager.PlaySwordSound();
 
             if (targetUnit != null)
             {
@@ -96,6 +101,7 @@ public class CardUseManager : MonoBehaviour
         EffectType.Poison))
         {
             player.animator.SetTrigger("Attack");
+            battleManager.PlaySwordSound();
 
             if (targetUnit != null)
             {
@@ -106,10 +112,12 @@ public class CardUseManager : MonoBehaviour
         else if (cardToUse.cardData.cardEffects.Contains(EffectType.Defend))
         {
             player.animator.SetTrigger("Buffer");
+            battleManager.PlayShieldSound();
         }
         else if (cardToUse.cardData.cardEffects.Contains(EffectType.Strength))
         {
             player.animator.SetTrigger("Buffer");
+            battleManager.PlayShieldSound();
         }
 
 
