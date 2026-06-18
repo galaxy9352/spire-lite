@@ -10,6 +10,7 @@ public class CardUseManager : MonoBehaviour
     public CardUI selectedCard = null; // 현재 위로 올라와 있는 '선택된 카드'
     public bool waitingTarget = false;
 
+
     void Awake()
     {
         if(Instance == null)
@@ -79,6 +80,39 @@ public class CardUseManager : MonoBehaviour
         player.curCost -= ctuData.cost;
         BattleManager.Instance.UpdateUI();
 
+        // 모션 추가 코드입니다.
+        if (cardToUse.cardData.cardEffects.Contains(
+        EffectType.Strike))
+        {
+            player.animator.SetTrigger("Attack");
+
+            if (targetUnit != null)
+            {
+                targetUnit.animator.SetTrigger("Hit");
+            }
+
+        }
+        else if (cardToUse.cardData.cardEffects.Contains(
+        EffectType.Poison))
+        {
+            player.animator.SetTrigger("Attack");
+
+            if (targetUnit != null)
+            {
+                targetUnit.animator.SetTrigger("Hit");
+            }
+
+        }
+        else if (cardToUse.cardData.cardEffects.Contains(EffectType.Defend))
+        {
+            player.animator.SetTrigger("Buffer");
+        }
+        else if (cardToUse.cardData.cardEffects.Contains(EffectType.Strength))
+        {
+            player.animator.SetTrigger("Buffer");
+        }
+
+
         // 💡 변경된 코루틴 실행 및 대기 (다단히트 등 효과가 모두 끝날 때까지 대기)
         yield return StartCoroutine(ctuData.UseCardRoutine(player, targetUnit));
 
@@ -93,6 +127,7 @@ public class CardUseManager : MonoBehaviour
     // 2️⃣ 기존 함수들이 있던 자리에 OnCardClickedInHand, OnTargetSelected에서 바로 부를 수 있도록 연결 함수를 작성해.
     private void ProcessCardUsage(CardUI cardToUse)
     {
+        
         StartCoroutine(ProcessCardUsageRoutine(cardToUse, target));
     }
 

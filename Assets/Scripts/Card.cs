@@ -13,6 +13,7 @@ public enum EffectType
     Strike, Defend, Strength, Vulnerable, Weak, Poison, CostCard, DrawCard, Heal
 }
 
+
 [CreateAssetMenu(fileName = "NewCard", menuName = "Cards/BasicCard")]
 public class Card : ScriptableObject
 {

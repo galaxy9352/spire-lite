@@ -322,6 +322,12 @@ public class BattleManager : MonoBehaviour
             // 3. 정해진 타수만큼 반복해서 데미지를 입힘
             for (int i = 0; i < hits; i++)
             {
+                enemy.animator.SetTrigger("Attack");
+
+                yield return new WaitForSeconds(0.2f);
+
+                playerUnit.animator.SetTrigger("Hit");
+
                 int dmg = enemy.GetAttackDamage(enemy.nextActionValue, playerUnit);
                 playerUnit.TakeFinalDamage(dmg);
 

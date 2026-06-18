@@ -6,6 +6,16 @@ using UnityEngine.UI;
 
 public class Unit : MonoBehaviour, IPointerDownHandler
 {
+    public Animator animator;
+    private bool isDead = false;    // 모션용
+    private void Die()
+    {
+        isDead = true;
+
+        animator.SetTrigger("Death");
+    }
+
+
     [Header("Unit Status")]
     public string unitName;
     public bool isPlayer;
@@ -20,6 +30,7 @@ public class Unit : MonoBehaviour, IPointerDownHandler
     public int vulnerable;
     public int weak;
     public int poison;
+
 
     [HideInInspector] public int strengthAddedLastTurn;
     [HideInInspector] public int strengthAddedThisTurn;
@@ -134,6 +145,12 @@ public class Unit : MonoBehaviour, IPointerDownHandler
     {
         if (amount <= 0) return;
         currentHP = Mathf.Max(0, currentHP - amount);
+
+        if (currentHP <= 0 && !isDead)
+        {
+            Die();
+        }
+
         if (BattleManager.Instance != null)
         {
             BattleManager.Instance.CheckWinLose();
